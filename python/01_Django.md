@@ -1,10 +1,10 @@
 <!--
  * @Author: LittleQ
  * @Date: 2023-02-13 22:47:03
- * @LastEditTime: 2023-02-13 23:35:52
+ * @LastEditTime: 2023-02-14 22:35:41
  * @LastEditors: LittleQ
  * @Description:
- * @FilePath: \JS_Question\python\01_Django.md
+ * @FilePath: \NoteBook\python\01_Django.md
 -->
 
 ### 1. python 环境安装，我这里使用的是 3.9 版本的 py
@@ -79,3 +79,30 @@ myApp                     // myApp 应用目录
 ├── tests.py             // 单元测试
 └── views.py             // 视图
 ```
+
+### 4. 安装 postgres 数据库连接包和配置数据
+
+- (1)安装 postgres
+
+```shell
+pip install psycopg2 -i https://pypi.tuna.tsinghua.edu.cn/simple
+```
+
+- (2) 配置连接
+  ![图 9](images/01_Django/IMG_20230214-223248167.png)
+
+- (3) 进行数据库迁移
+
+```
+python manage.py migrate
+
+// 创建用户名密码
+python manage.py createsuperuser
+
+```
+
+![图 2](images/01_Django/IMG_20230214-223524000.png)
+
+- (4) 登录成功
+
+![图 3](images/01_Django/IMG_20230214-223607389.png)
