@@ -58,8 +58,10 @@ function getDataType(target) {
 }
 
 {
-
-
   const bigin = BigInt(1236587489845500);
   console.log(getDataType(bigin))
 }
+
+let arr = [1, 1, 2, 3, 4, 5, 6, 2, 3, 4, 4, 5, 6];
+let uniqueArray = Array.from(new Set(arr));
+console.log(uniqueArray)
