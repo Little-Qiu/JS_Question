@@ -6,9 +6,10 @@
   </head>
   <body>
     <div id="app">
-      <input type="text" v-model="text" /> <br />
-      {{ text }} <br />
-      {{ text }}
+      <input type="text" v-model="message1" /> <br />
+      {{ message1 }} <br />
+      <input type="text" v-model="message2" /> <br />
+      {{ message2 }} <br />
     </div>
 
     <script>
@@ -54,6 +55,7 @@
         return flag;
       }
 
+      // 模板解析，根据遍历到的dom来解析绑定的
       function compile(node, vm) {
         var reg = /{{(.*)}}/;
 
@@ -86,6 +88,7 @@
         }
       }
 
+      // 订阅者
       function Watcher(vm, node, name) {
         Dep.target = this;
         this.name = name;
@@ -103,10 +106,11 @@
 
         // 获取data中的属性值
         get: function () {
-          this.value = this.vm[this.name]; // 触发相应属性的get
+          this.value = this.vm[this.name]; // 触发defineProperty劫持监听的相应属性的get方法
         },
       };
 
+      // 属性订阅器(dep)
       function Dep() {
         this.subs = [];
       }
@@ -138,7 +142,8 @@
       var vm = new Vue({
         el: "app",
         data: {
-          text: "hello world",
+          message1: "hello message1",
+          message2: "hello message2",
         },
       });
     </script>
