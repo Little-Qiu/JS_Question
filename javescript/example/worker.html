@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 主线程
+        var worker = new Worker('worker.js')
+        worker.postMessage([10, 24])
+
+        // 接收worker消息
+        worker.onmessage = function (e) {
+          console.log(e.data) // You post: 10,24
+        }
+        // 主线程关闭
+        // worker.terminate();
+
+        // Worker 线程关闭
+        // self.close();
+    </script>
+</body>
+</html>
