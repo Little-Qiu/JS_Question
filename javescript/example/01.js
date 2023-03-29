@@ -1,8 +1,8 @@
 /*
  * @Author: qlw longwen@spacesystech.com
  * @Date: 2023-02-10 14:41:45
- * @LastEditTime: 2023-03-02 21:16:13
- * @LastEditors: LittleQ
+ * @LastEditTime: 2023-03-29 20:49:21
+ * @LastEditors: qiulongwen
  * @Description: 描述
  * @FilePath: \NoteBook\javescript\example\01.js
  */
@@ -66,3 +66,40 @@
 // let uniqueArray = Array.from(new Set(arr));
 // console.log(uniqueArray)
 
+// 数组乱序
+// function shuffle(arr) {
+//     let new_arr = arr.map(i => ({v: i, r: Math.random()}));
+//     new_arr.sort((a, b) => a.r - b.r);
+//     arr.splice(0, arr.length, ...new_arr.map(i => i.v));
+// }
+
+// let a = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+// let n = 10000;
+// let count = (new Array(a.length)).fill(0);
+
+// for (let i = 0; i < n; i ++) {
+//     shuffle(a);
+//     count[a.indexOf('a')]++;
+// }
+
+// console.log(count);
+
+
+// 2019.12.20优化版本，去除多余循环
+function shuffle(arr) {
+    let i = arr.length;
+    while (--i) {
+        let j = Math.floor(Math.random() * i);
+        [arr[j], arr[i]] = [arr[i], arr[j]];
+    }
+}
+let a = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+let n = 10000;
+let count = (new Array(a.length)).fill(0);
+
+for (let i = 0; i < n; i++) {
+    shuffle(a);
+    count[a.indexOf('a')]++;
+}
+
+console.log(count);
