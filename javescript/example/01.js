@@ -86,20 +86,40 @@
 
 
 // 2019.12.20优化版本，去除多余循环
-function shuffle(arr) {
-    let i = arr.length;
-    while (--i) {
-        let j = Math.floor(Math.random() * i);
-        [arr[j], arr[i]] = [arr[i], arr[j]];
+// function shuffle(arr) {
+//     let i = arr.length;
+//     while (--i) {
+//         let j = Math.floor(Math.random() * i);
+//         [arr[j], arr[i]] = [arr[i], arr[j]];
+//     }
+// }
+// let a = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+// let n = 10000;
+// let count = (new Array(a.length)).fill(0);
+
+// for (let i = 0; i < n; i++) {
+//     shuffle(a);
+//     count[a.indexOf('a')]++;
+// }
+
+// console.log(count);
+
+
+
+function deepClone(source){
+    if(source === null || typeof source !== "object" || source instanceof Date || source instanceof RegExp){
+        return source;
+    }
+    // 递归出口
+    if(typeof source !== 'object') return source;
+    let obj = Array.isArray(source)?[]:{};
+    for(let i in obj){
+        if(source.hasOwnProperty(i)){
+            obj[i] = deepClone(source[i]);
+        }
     }
 }
-let a = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
-let n = 10000;
-let count = (new Array(a.length)).fill(0);
 
-for (let i = 0; i < n; i++) {
-    shuffle(a);
-    count[a.indexOf('a')]++;
+function debounce(){
+    
 }
-
-console.log(count);
